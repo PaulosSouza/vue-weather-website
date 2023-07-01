@@ -1,46 +1,55 @@
-# weatherapp
+<h1 align="center"> Weather App <img src="./.github/cloud-fill.png" width="30" height="30" /></h1>
+<p align="center">
+    A weather application with the purpose of enhancing my VueJS skills 
+    through this <a href="https://www.youtube.com/watch?v=gUsBaB5ViAo&list=PL4cUxeGkcC9hfoy8vFQ5tbXO3vY0xhhUZ" target="_blank">youtube</a> playlist.
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+![home](./.github/home.png)
 
-## Recommended IDE Setup
+## 🛠 Installation & Set Up
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. Clone the repository
 
-## Type Support for `.vue` Imports in TS
+   ```sh
+   git clone https://github.com/PaulosSouza/vue-weather-website.git weather-app
+   ```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+2. Install dependencies
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+   ```sh
+   npm i
+   ```
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+3. Create an account and get API keys from [Mapbox](https://www.mapbox.com/) and [OpenWeather](https://openweathermap.org/) APIs.
 
-## Customize configuration
+4. Duplicate the file .env.example and replace those variables with your own api keys.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+5. Start the development server.
 
-## Project Setup
+   ```sh
+   npm run dev
+   ```
 
-```sh
-npm install
-```
+## 🚀 Building and Running for Production
 
-### Compile and Hot-Reload for Development
+1. Generate a production build to see how it works
 
-```sh
-npm run dev
-```
+   ```sh
+   npm run build-only
+   ```
 
-### Type-Check, Compile and Minify for Production
+## 🧑‍💻 Tecnologies Reference
 
-```sh
-npm run build
-```
+- [Vuejs](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [OpenWeather](https://openweathermap.org/)
+- [Mapbox](https://www.mapbox.com/)
 
-### Lint with [ESLint](https://eslint.org/)
+#### Linters & Formatters
 
-```sh
-npm run lint
-```
+- [Eslint](https://eslint.org/)
+- [Vue Eslint](https://eslint.vuejs.org/)
+- [Airbnb Vue Eslint](https://github.com/vuejs/eslint-config-airbnb/tree/main/packages/eslint-config-airbnb-with-typescript#readme/)
+- [Prettier](https://prettier.io/)
