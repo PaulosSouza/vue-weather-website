@@ -53,3 +53,8 @@
 - [Vue Eslint](https://eslint.vuejs.org/)
 - [Airbnb Vue Eslint](https://github.com/vuejs/eslint-config-airbnb/tree/main/packages/eslint-config-airbnb-with-typescript#readme/)
 - [Prettier](https://prettier.io/)
+
+## 🚧 Improvements
+
+- [ ] Use of useDebounceFn from [VueUse](https://vueuse.org/) instead of setTimeout
+- [ ] Use of useFetch in one page instead of Suspense
