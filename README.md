@@ -58,3 +58,4 @@
 
 - [ ] Use of useDebounceFn from [VueUse](https://vueuse.org/) instead of setTimeout
 - [ ] Use of useFetch in one page instead of Suspense
+- [ ] Add internationalization
