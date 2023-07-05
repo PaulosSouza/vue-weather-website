@@ -14,8 +14,8 @@
       <div class="flex flex-1 justify-end gap-3">
         <i
           class="fa-solid fa-circle-info cursor-pointer text-xl duration-150 hover:text-weather-secondary"
-          @click="toggleModal"
-          @keypress="toggleModal"
+          @click="toggleModal()"
+          @keypress="toggleModal()"
         ></i>
 
         <i
@@ -28,7 +28,7 @@
         <LanguageSwitcher />
       </div>
 
-      <BaseModal @close-modal="toggleModal" :modal-active="modalActive">
+      <BaseModal @close-modal="toggleModal()" :modal-active="modalActive">
         <div class="text-black">
           <h1 class="mb-1 text-2xl">About:</h1>
           <p class="mb-4">
@@ -67,18 +67,15 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { v4 as uuidV4 } from 'uuid';
 import { ref } from 'vue';
 import { type Location } from '@/interfaces/Location';
+import { useToggle } from '@vueuse/core';
 import LanguageSwitcher from './LanguageSwitcher.vue';
 import BaseModal from './BaseModal.vue';
 
 const router = useRouter();
 const route = useRoute();
 
-const modalActive = ref(false);
+const [modalActive, toggleModal] = useToggle(false);
 const savedLocations = ref<Location[]>([]);
-
-function toggleModal() {
-  modalActive.value = !modalActive.value;
-}
 
 function addCity() {
   const savedLocationsFromLocalStorage = localStorage.getItem('savedLocations');
