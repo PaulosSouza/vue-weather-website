@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-1 flex-col items-center">
+  <div
+    class="flex flex-1 flex-col items-center"
+    v-if="weatherData && forecastHourly"
+  >
     <!-- Banner-->
     <div
       v-if="route.query.preview"
@@ -94,47 +97,25 @@
 <script setup lang="ts">
 import type { WeatherLocation } from '@/interfaces/Location';
 import type { ForecastHourly, Weather } from '@/interfaces/Weather';
-import axios from 'axios';
-import { ref } from 'vue';
+import { useFetch } from '@vueuse/core';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
 
-const weatherData = ref<Weather>({} as Weather);
-const forecastHourly = ref<ForecastHourly>({} as ForecastHourly);
+const { data: weatherData } = await useFetch<Weather>(
+  `https://api.openweathermap.org/data/2.5/weather?lat=${route.query.lat}&lon=${
+    route.query.lng
+  }&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}&units=imperial`
+).json();
 
-async function getWeatherData() {
-  try {
-    const openWeatherResult = await axios.get<Weather>(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${
-        route.query.lat
-      }&lon=${route.query.lng}&appid=${
-        import.meta.env.VITE_OPEN_WEATHER_API_KEY
-      }&units=imperial`
-    );
-
-    return openWeatherResult.data;
-  } catch (error) {
-    throw new Error(JSON.stringify(error));
-  }
-}
-
-async function getForecastHourly() {
-  try {
-    const forecastWeatherResult = await axios.get<ForecastHourly>(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${
-        route.query.lat
-      }&lon=${route.query.lng}&appid=${
-        import.meta.env.VITE_OPEN_WEATHER_API_KEY
-      }&units=imperial`
-    );
-
-    return forecastWeatherResult.data;
-  } catch (error) {
-    throw new Error(JSON.stringify(error));
-  }
-}
+const { data: forecastHourly } = await useFetch<ForecastHourly>(
+  `https://api.openweathermap.org/data/2.5/forecast?lat=${
+    route.query.lat
+  }&lon=${route.query.lng}&appid=${
+    import.meta.env.VITE_OPEN_WEATHER_API_KEY
+  }&units=imperial`
+).json();
 
 function removeCity() {
   const locations = JSON.parse(
@@ -151,7 +132,4 @@ function removeCity() {
     name: 'home',
   });
 }
-
-weatherData.value = await getWeatherData();
-forecastHourly.value = await getForecastHourly();
 </script>
