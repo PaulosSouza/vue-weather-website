@@ -4,7 +4,7 @@
     <div class="relative mb-8 pt-4">
       <input
         v-model="searchQuery"
-        @input="getSearchResults"
+        @input="getSearchResultsDebounce"
         aria-label="search-city-and-state"
         type="text"
         :placeholder="$t('placeholder')"
@@ -50,6 +50,7 @@
 </template>
 
 <script setup lang="ts">
+import { useDebounceFn } from '@vueuse/core';
 import CityCardSkeleton from '@/components/CityCardSkeleton.vue';
 import CityList from '@/components/CityList.vue';
 import axios from 'axios';
@@ -77,31 +78,26 @@ const searchError = ref(false);
 
 const liElements = ref<HTMLLIElement[] | null>(null);
 
-const queryTimeout = ref<undefined | number>(undefined);
 const mapboxSearchResults = ref<Geocoding[] | null>(null);
 
-function getSearchResults() {
-  clearTimeout(queryTimeout.value);
+const getSearchResultsDebounce = useDebounceFn(async () => {
+  if (!searchQuery.value) {
+    mapboxSearchResults.value = null;
+    return;
+  }
 
-  queryTimeout.value = setTimeout(async () => {
-    if (!searchQuery.value) {
-      mapboxSearchResults.value = null;
-      return;
-    }
+  try {
+    const { data } = await axios.get<Response>(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${
+        searchQuery.value
+      }.json?access_token=${import.meta.env.VITE_MAPBOX_API_KEY}&types=place`
+    );
 
-    try {
-      const { data } = await axios.get<Response>(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${
-          searchQuery.value
-        }.json?access_token=${import.meta.env.VITE_MAPBOX_API_KEY}&types=place`
-      );
-
-      mapboxSearchResults.value = data.features;
-    } catch {
-      searchError.value = true;
-    }
-  }, 300);
-}
+    mapboxSearchResults.value = data.features;
+  } catch {
+    searchError.value = true;
+  }
+}, 1000);
 
 function previewCity(placeName: string, geometry: Geometry) {
   const [city, state] = placeName.split(',');
