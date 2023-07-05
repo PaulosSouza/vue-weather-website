@@ -57,5 +57,7 @@
 ## 🚧 Improvements
 
 - [x] Add internationalization
-- [ ] Use of useDebounceFn from [VueUse](https://vueuse.org/) instead of setTimeout
+- [x] Add favicon (thanks to [Favicon.io](https://favicon.io/))
+- [x] Use of useDebounceFn from [VueUse](https://vueuse.org/) instead of setTimeout
+- [x] Use of useToggle from [VueUse](https://vueuse.org/)
 - [ ] Use of useFetch in one page instead of Suspense

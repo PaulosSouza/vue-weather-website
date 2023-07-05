@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createI18n } from 'vue-i18n';
 import { nextTick } from 'vue';
-import pt from '@/locales/pt.json';
+import en from '@/locales/en.json';
 
 export const i18n = createI18n({
   locale: import.meta.env.VITE_DEFAULT_LOCALE,
@@ -9,7 +9,7 @@ export const i18n = createI18n({
   globalInjection: true,
   legacy: false,
   messages: {
-    pt,
+    en,
   },
 });
 
