@@ -1,0 +1,16 @@
+{
+  "locales": {
+    "en": "English",
+    "pt": "Portuguese"
+  },
+  "language": "en-us",
+  "title": "The Local Weather",
+  "placeholder": "Search for a city or state",
+  "noLocations": "No locations added. To start tracking a location, search in the field above.",
+  "cityPreview": "You are currently previewing this city, click the '+' icon to start tracking this city",
+  "hourlyWeather": "Hourly Weather",
+  "error": {
+    "notFound": "Sorry, something went wrong, please try again.",
+    "noMatch": "No results match your query, try a diffent term."
+  }
+}

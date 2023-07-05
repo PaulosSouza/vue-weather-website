@@ -6,8 +6,7 @@
       class="w-full bg-weather-secondary p-4 text-center text-white"
     >
       <p>
-        You are currently previewing this city, click the "+" icon to start
-        tracking this city
+        {{ $t('cityPreview') }}
       </p>
     </div>
 
@@ -17,7 +16,7 @@
 
       <p class="mb-12 text-sm">
         {{
-          new Date(weatherData.dt).toLocaleString('en-us', {
+          new Date(weatherData.dt).toLocaleString($t('language'), {
             weekday: 'short',
             day: '2-digit',
             month: 'long',
@@ -25,7 +24,7 @@
         }}
 
         {{
-          new Date(weatherData.dt).toLocaleString('en-us', {
+          new Date(weatherData.dt).toLocaleString($t('language'), {
             timeStyle: 'short',
           })
         }}
@@ -51,7 +50,7 @@
     <!-- Hourly Weather -->
     <div class="w-full max-w-screen-md py-12">
       <div class="mx-8 text-white">
-        <h2 class="mb-4">Hourly Weather</h2>
+        <h2 class="mb-4">{{ $t('hourlyWeather') }}</h2>
 
         <div class="flex gap-10 overflow-x-scroll">
           <div
@@ -61,7 +60,7 @@
           >
             <p class="whitespace-nowrap text-xs">
               {{
-                new Date(hourData.dt).toLocaleString('en-us', {
+                new Date(hourData.dt).toLocaleString($t('language'), {
                   hour: 'numeric',
                 })
               }}

@@ -32,7 +32,6 @@ router.beforeEach((to, _from, next) => {
   const metaTitle = to.meta.title;
 
   const documentTitle = shouldShowLocationTitle ? locationTitle : metaTitle;
-
   document.title = `${documentTitle} | The Local Weather`;
 
   next();

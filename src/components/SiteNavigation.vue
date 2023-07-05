@@ -1,12 +1,13 @@
 <template>
   <header class="sticky top-0 bg-weather-primary shadow-lg">
     <nav
-      class="container flex flex-col items-center gap-4 py-6 text-white sm:flex-row"
+      id="navbar"
+      class="container relative flex flex-col items-center gap-4 py-6 text-white sm:flex-row"
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex flex-1 items-center gap-3">
           <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">The Local Weather</p>
+          <p class="text-2xl">{{ $t('title') }}</p>
         </div>
       </RouterLink>
 
@@ -23,6 +24,8 @@
           @keypress="addCity"
           v-if="route.query.preview"
         ></i>
+
+        <LanguageSwitcher />
       </div>
 
       <BaseModal @close-modal="toggleModal" :modal-active="modalActive">
@@ -64,6 +67,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { v4 as uuidV4 } from 'uuid';
 import { ref } from 'vue';
 import { type Location } from '@/interfaces/Location';
+import LanguageSwitcher from './LanguageSwitcher.vue';
 import BaseModal from './BaseModal.vue';
 
 const router = useRouter();

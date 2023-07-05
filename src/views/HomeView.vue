@@ -1,5 +1,5 @@
 <template>
-  <main class="container text-white">
+  <main class="container relative text-white">
     <!-- Input and Search of Location-->
     <div class="relative mb-8 pt-4">
       <input
@@ -7,7 +7,7 @@
         @input="getSearchResults"
         aria-label="search-city-and-state"
         type="text"
-        placeholder="Search for a city or state"
+        :placeholder="$t('placeholder')"
         class="w-full border-b bg-transparent px-1 py-2 focus:border-weather-primary focus:shadow-[0px_1px_0_0_#004e71] focus:outline-none"
       />
 
@@ -15,10 +15,10 @@
         class="absolute top-[66px] w-full bg-weather-secondary px-1 py-2 text-white shadow-md"
         v-if="mapboxSearchResults"
       >
-        <p v-if="searchError">Sorry, something went wrong, please try again.</p>
+        <p v-if="searchError">{{ $t('error.notFound') }}</p>
 
         <p v-if="!searchError && !mapboxSearchResults.length">
-          No results match your query, try a diffent term.
+          {{ $t('error.noMatch') }}
         </p>
 
         <template v-else>

@@ -1,0 +1,16 @@
+{
+  "locales": {
+    "en": "Inglês",
+    "pt": "Português"
+  },
+  "language": "pt-br",
+  "title": "O Tempo Local",
+  "placeholder": "Procure por uma cidade ou estado",
+  "noLocations": "Nenhuma localizacão foi adicionada. Procure por uma nova localizacão através do campo acima.",
+  "cityPreview": "Você atualmente está visualizando esta cidade, click no ícone '+' para comecar a monitorar esta cidade.",
+  "hourlyWeather": "Tempo de hora em hora",
+  "error": {
+    "notFound": "Desculpe, algo de errado aconteceu, por favor tente de novo.",
+    "noMatch": "Nenhum resultado foi encontrado, tente procurar por outro termo."
+  }
+}

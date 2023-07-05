@@ -4,7 +4,7 @@
   </div>
 
   <p v-if="!savedLocations.length">
-    No locations added. To start tracking a location, search in the field above.
+    {{ $t('noLocations') }}
   </p>
 </template>
 
